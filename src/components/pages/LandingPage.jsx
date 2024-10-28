@@ -84,7 +84,7 @@ export default function LandingPage(props) {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 space-">
             <div className="insights-details-header">
               <h3>5%</h3>
             </div>
