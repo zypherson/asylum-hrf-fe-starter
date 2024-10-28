@@ -1,3 +1,6 @@
+import pieChart from '../../assets/pie-chart.png';
+import lineGraph from '../../assets/line-graph.png';
+import barGraph from '../../assets/bar-graph.png';
 export default function LandingPage(props) {
     const scrollToTop = () => {
         document.body.scrollTop = 0;
@@ -18,17 +21,17 @@ export default function LandingPage(props) {
 
       <div className="graphs-section">
         <div className="flex flex-col">
-            <div className="flex">
-            <div className="flex">
-                    <img src="#" alt="" />
+            <div className="flex justify-center m-14 gap-20 text-2xl">
+            <div className="flex flex-col gap-3">
+                    <img src={barGraph} alt="" className="h-[300px] w-[500px]" />
                     <h3>Search Grant Rates By Office</h3>
                 </div>
-                <div className="flex">
-                    <img src="#" alt="" />
+                <div className="flex flex-col gap-3">
+                    <img src={pieChart} alt="" className="h-[300px]" />
                     <h3>Search Grant Rates By Nationality</h3>
                 </div>
-                <div className="flex">
-                    <img src="#" alt="" />
+                <div className="flex flex-col gap-3">
+                    <img src={lineGraph} alt="" className="h-[300px] w-[500px]" />
                     <h3>Search Grant Rates Over Time</h3>
                 </div>
             </div>
