@@ -1,8 +1,9 @@
-import Logo from '../../assets/logo.png'
+import Logo from "../../assets/logo.png";
+
 export default function Header() {
-    return (
-        <div className="flex w-[100%] bg-[#666555] justify-between px-14">
-        <div className="flex justify-between">
+  return (
+    <div className="flex w-[100%] bg-[#666555] justify-between px-14">
+      <div className="flex justify-between">
         <a href="https://www.humanrightsfirst.org/">
           <img className="w-[100px]" src={Logo} alt="HRF logo white" />
         </a>
@@ -16,5 +17,5 @@ export default function Header() {
         </a>
       </div>
     </div>
-    );
+  );
 }
