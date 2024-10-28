@@ -10,7 +10,7 @@ export default function LandingPage(props) {
 <div className="flex flex-col w-[100vw]">
       <div className="flex bg-[#666555] p-10">
         <div className="flex flex-col mx-auto">
-          <h1 className="text-5xl mb-8 text-white">Asylum Office Grant Rate Tracker</h1>
+          <h1 className="text-6xl mb-8 text-white">Asylum Office Grant Rate Tracker</h1>
           <h3 className="text-white">
             The Asylum Office Grant Rate Tracker provides asylum seekers,
             researchers, policymakers, and the public an interactive tool to
