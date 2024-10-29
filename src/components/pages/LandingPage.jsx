@@ -10,7 +10,7 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className="flex flex-col w-[100vw]">
+    <div className="flex flex-col gap-20 w-[100vw]">
       <div className="flex bg-[#666555] p-10">
         <div className="flex flex-col mx-auto">
           <h1 className="text-6xl mb-8 text-white">
@@ -24,7 +24,7 @@ export default function LandingPage(props) {
         </div>
       </div>
 
-      <div className="graphs-section">
+      <div className="graphs-section flex flex-col">
         <div className="flex flex-col">
           <div className="flex justify-center m-14 gap-20 text-2xl">
             <div className="flex flex-col gap-3">
@@ -32,7 +32,11 @@ export default function LandingPage(props) {
               <h3>Search Grant Rates By Office</h3>
             </div>
             <div className="flex flex-col gap-3">
-              <img src={pieChart} alt="" className="h-[300px]" />
+              <img
+                src={pieChart}
+                alt=""
+                className="h-[300px] contain-content"
+              />
               <h3>Search Grant Rates By Nationality</h3>
             </div>
             <div className="flex flex-col gap-3">
@@ -40,6 +44,7 @@ export default function LandingPage(props) {
               <h3>Search Grant Rates Over Time</h3>
             </div>
           </div>
+
           <div className="flex align-center mx-auto gap-8">
             <button className="bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold">
               View the Data
@@ -50,22 +55,28 @@ export default function LandingPage(props) {
           </div>
         </div>
       </div>
+
       <div className="middle-section flex">
-        <div className="hrf-img-container">
-          <img src={paperStack} alt="Human Rights First" className="hrf-img" />
+        <div className="flex-1 hrf-img-container content-center p-20">
+          <img
+            src={paperStack}
+            alt="Human Rights First"
+            className="hrf-img rounded-2xl h-[50%] w-[100%]"
+          />
         </div>
-        <div className="middle-section-text-container content-center">
-          <h3>
+        <div className="middle-section-text-container flex-1 content-center p-20">
+          <p className="">
             Human Rights First has created a search tool to give you a
             user-friendly way to explore a data set of asylum decisions between
             FY 2016 and May 2021 by the USCIS Asylum Office, which we received
             through a Freedom of Information Act request. You can search for
             information on asylum grant rates by year, nationality, and asylum
             office, visualize the data with charts and heat maps, and download
-            the data set
-          </h3>
+            the data set.
+          </p>
         </div>
       </div>
+
       <div className="insights-section">
         <div className="insights-section-header">
           <h3>Systemic Disparity Insights</h3>
@@ -109,9 +120,11 @@ export default function LandingPage(props) {
           </div>
         </div>
       </div>
+
       <div className="read-more-section">
         <button onClick={() => {}}>Read More</button>
       </div>
+
       <div>
         {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
