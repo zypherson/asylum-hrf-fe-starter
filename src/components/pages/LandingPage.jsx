@@ -10,7 +10,7 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className="flex flex-col gap-20 w-[100vw]">
+    <div className="flex flex-col w-[100vw]">
       <div className="flex bg-[#666555] p-10">
         <div className="flex flex-col mx-auto">
           <h1 className="text-6xl mb-8 text-white">
@@ -24,7 +24,7 @@ export default function LandingPage(props) {
         </div>
       </div>
 
-      <div className="graphs-section flex flex-col">
+      <div className="graphs-section flex flex-col pt-10">
         <div className="flex flex-col">
           <div className="flex justify-center m-14 gap-20 text-2xl">
             <div className="flex flex-col gap-3">
