@@ -1,17 +1,21 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import { appDataReducer } from './appDataReducer.js';
 
 const AppContext = createContext({});
 
 const useAppContextProvider = () => {
-  return {};
+  const [appData, appDataDispatch] = useReducer(appDataReducer, {});
+
+  return { appData };
 };
 
-export function useMatchAndMemoryContext() {
+export function useAppContext() {
   return useContext(AppContext);
 }
 
-export function ProvideMatchAndMemoryContext({ children }) {
+export function ProvideAppContext({ children }) {
   const contextValue = useAppContextProvider();
+
   return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );

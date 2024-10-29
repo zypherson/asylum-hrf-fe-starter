@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsContainer } from './components/pages/GraphsContainer.jsx';
 import { NotFoundPage } from './components/pages/NotFoundPage.jsx';
 import * as React from 'react';
-import { ProvideMatchAndMemoryContext } from './context/AppContext.js';
+import { ProvideAppContext } from './context/AppContext.js';
 
 const router = createBrowserRouter([
   {
@@ -29,13 +29,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ProvideMatchAndMemoryContext>
+    <ProvideAppContext>
       <div className="font-serif w-[100vw] h-[100vh] m-0 flex flex-col justify-between align-centre text-center min-h-screen">
         <Header />
         <RouterProvider router={router} />
         <Footer />
       </div>
-    </ProvideMatchAndMemoryContext>
+    </ProvideAppContext>
   );
 }
 
