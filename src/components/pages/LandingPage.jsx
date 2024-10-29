@@ -122,7 +122,10 @@ export default function LandingPage(props) {
       </div>
 
       <div className="read-more-section">
-        <button className="" onClick={() => {}}>
+        <button
+          className="bg-[#666555] text-white px-4 py-2"
+          onClick={() => scrollToTop()}
+        >
           Read More
         </button>
       </div>
