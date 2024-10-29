@@ -130,12 +130,15 @@ export default function LandingPage(props) {
         </button>
       </div>
 
-      <div>
+      <div className="back-to-top p-16">
         {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         {/* <div className="bottom-section">*/}
-        <p onClick={() => scrollToTop()} className="back-to-top">
+        <button
+          onClick={() => scrollToTop()}
+          className="back-to-top font-medium"
+        >
           Back To Top ^
-        </p>
+        </button>
       </div>
     </div>
   );
