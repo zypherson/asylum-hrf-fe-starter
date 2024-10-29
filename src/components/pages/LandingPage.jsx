@@ -1,7 +1,7 @@
-import pieChart from "../../assets/pie-chart.png";
-import lineGraph from "../../assets/line-graph.png";
-import barGraph from "../../assets/bar-graph.png";
-import paperStack from "../../assets/paper-stack.jpg";
+import pieChart from '../../assets/pie-chart.png';
+import lineGraph from '../../assets/line-graph.png';
+import barGraph from '../../assets/bar-graph.png';
+import paperStack from '../../assets/paper-stack.jpg';
 
 export default function LandingPage(props) {
   const scrollToTop = () => {
@@ -72,7 +72,7 @@ export default function LandingPage(props) {
         </div>
 
         <div className="insights-section-details flex justify-center m-14 gap-20 text-2xl">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col flex-1 gap-3">
             <div className="insights-details-header">
               <h3>36%</h3>
             </div>
@@ -84,7 +84,7 @@ export default function LandingPage(props) {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-3 space-">
+          <div className="flex flex-col flex-1 gap-3 space-">
             <div className="insights-details-header">
               <h3>5%</h3>
             </div>
@@ -95,7 +95,7 @@ export default function LandingPage(props) {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col flex-1 gap-3">
             <div className="insights-details-header">
               <h3>6x Lower</h3>
             </div>
