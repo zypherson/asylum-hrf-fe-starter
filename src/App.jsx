@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsContainer } from './components/pages/GraphsContainer.jsx';
 import { NotFoundPage } from './components/pages/NotFoundPage.jsx';
 import * as React from 'react';
-import { ProvideAppContext } from './context/AppContext.js';
+import { ProvideAppContext } from './context/AppContext.jsx';
 
 const router = createBrowserRouter([
   {
