@@ -1,8 +1,8 @@
 // This reducer is used strictly for allowing the user to build up a query string which is sent to the API.
 // The response is handled by the dataReducer.
 
-import { SET_ASYLUM_OFFICE_FILTER, SET_CONTINENT_FILTER, SET_DATE_FILTER_FORMAT, SET_GEOPOLITICAL_FILTER } from '../actionTypes';
-import { continentEnum, geopoliticalEnum, officeRegions, regions } from '../../data/filterConstants';
+import {SET_ASYLUM_OFFICE_FILTER, SET_DATE_FILTER_FORMAT} from '../actionTypes';
+// import { continentEnum, geopoliticalEnum, officeRegions, regions } from '../../data/filterConstants';
 
 export const initialFilterState = {
   isFiscalYear: false,
@@ -20,20 +20,20 @@ export const filterReducer = (state = initialFilterState, action) => {
     case SET_ASYLUM_OFFICE_FILTER: {
       return { ...state, asylumOffice: action.payload };
     }
-    case SET_CONTINENT_FILTER: {
-      return {
-        ...state,
-        continents: action.payload,
-        region: deriveRegion({ ...state, continents: action.payload }),
-      };
-    }
-    case SET_GEOPOLITICAL_FILTER: {
-      return {
-        ...state,
-        geopolitical: action.payload,
-        region: deriveRegion({ ...state, geopolitical: action.payload }),
-      };
-    }
+    // case SET_CONTINENT_FILTER: {
+    //   return {
+    //     ...state,
+    //     continents: action.payload,
+    //     region: deriveRegion({ ...state, continents: action.payload }),
+    //   };
+    // }
+    // case SET_GEOPOLITICAL_FILTER: {
+    //   return {
+    //     ...state,
+    //     geopolitical: action.payload,
+    //     region: deriveRegion({ ...state, geopolitical: action.payload }),
+    //   };
+    // }
     default: {
       return state;
     }
@@ -41,27 +41,27 @@ export const filterReducer = (state = initialFilterState, action) => {
 };
 
 // As regional filters are added, destructure them into this function and add the appropriate filter step
-const deriveRegion = ({ continents, geopolitical }) => {
-  const territoryList = {};
-  regions.forEach(region => (territoryList[region.territory] = false));
-
-  if (continents.length > 0 && continents.length < Object.keys(continentEnum).length) {
-    regions.forEach(region => {
-      if (continents.includes(region.continent)) {
-        territoryList[region.territory] = true;
-      }
-    });
-  }
-  if (geopolitical.length > 0 && geopolitical.length < Object.keys(geopoliticalEnum).length) {
-    regions.forEach(region => {
-      if (geopolitical.includes(region.geopolitical)) {
-        territoryList[region.territory] = true;
-      }
-    });
-  }
-
-  return territoryList;
-};
+// const deriveRegion = ({ continents, geopolitical }) => {
+//   const territoryList = {};
+//   regions.forEach(region => (territoryList[region.territory] = false));
+//
+//   if (continents.length > 0 && continents.length < Object.keys(continentEnum).length) {
+//     regions.forEach(region => {
+//       if (continents.includes(region.continent)) {
+//         territoryList[region.territory] = true;
+//       }
+//     });
+//   }
+//   if (geopolitical.length > 0 && geopolitical.length < Object.keys(geopoliticalEnum).length) {
+//     regions.forEach(region => {
+//       if (geopolitical.includes(region.geopolitical)) {
+//         territoryList[region.territory] = true;
+//       }
+//     });
+//   }
+//
+//   return territoryList;
+// };
 
 // TODO: Look at this -
 /* This will build the query parameter string to send to the api with all present filter values.
@@ -70,27 +70,26 @@ const deriveRegion = ({ continents, geopolitical }) => {
  a selection has been made, but whether all options have been selected (to limit string length).
  NOTE - when the from/to query parameters are added, be sure they follow the yyyy-mm-dd string
  format that the back end is expecting */
-export const buildQueryString = ({ isFiscalYear, asylumOffice, region }) => {
-  let query = '?';
-  const regionArray = Object.entries(region)
-    .filter(territory => territory[1])
-    .map(territory => territory[0]);
-
-  if (isFiscalYear) {
-    query += 'isFiscalYear=true&';
-  }
-  if (asylumOffice.length > 0 && asylumOffice.length < officeRegions.length) {
-    query += `asylumOffice=${asylumOffice.join(',')}&`;
-  }
-  // Eventually, the regions object should house a key for country code which can be used to build
-  // The query parameter string so as to limit the length of the query string (DDOS issues can
-  // Potentially come into play if the length is excessive)
-  if (regionArray.length > 0) {
-    query += `citizenship=${regionArray.join('0')}&`;
-  }
-  // Use 0 as the delimiter to ease incorporating updates ("," and "-" show up in citizenship records)
-  if (query.slice(query.length - 1) === '&') {
-    query = query.slice(0, query.length - 1);
-  }
-  return query;
-};
+// export const buildQueryString = ({ isFiscalYear, asylumOffice, region }) => {
+//   let query = '?';
+//   const regionArray = Object.entries(region)
+//     .filter(territory => territory[1])
+//     .map(territory => territory[0]);
+//
+//   if (isFiscalYear) {
+//     query += 'isFiscalYear=true&';
+//   }
+//   if (asylumOffice.length > 0 && asylumOffice.length < officeRegions.length) {
+//     query += `asylumOffice=${asylumOffice.join(',')}&`;
+//   }
+//   // Eventually, the regions object should house a key for country code which can be used to build the query parameter string to limit the length of the query string (DDOS issues can
+//   // Potentially come into play if the length is excessive)
+//   if (regionArray.length > 0) {
+//     query += `citizenship=${regionArray.join('0')}&`;
+//   }
+//   // Use 0 as the delimiter to ease incorporating updates ("," and "-" show up in citizenship records)
+//   if (query.slice(query.length - 1) === '&') {
+//     query = query.slice(0, query.length - 1);
+//   }
+//   return query;
+// };

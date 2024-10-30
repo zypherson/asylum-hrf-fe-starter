@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from 'react';
 import { initialVizState, vizReducer } from './reducers/vizReducer.js';
 import { dataReducer, initialDataState } from './reducers/dataReducer.js';
 import { filterReducer, initialFilterState } from './reducers/filterReducer.js';
-import { SET_VISUALIZATION_DATA } from './actionTypes/index.js';
+import { RESET_VISUALIZATION_QUERY, SET_HEAT_MAP_YEARS, SET_VISUALIZATION_DATA } from './actionTypes/index.js';
 
 const AppContext = createContext({});
 
@@ -24,7 +24,11 @@ const useAppContextProvider = () => {
 
   const setHeatMapYears = (view, office, idx, year) => vizReducerDispatch({ type: SET_HEAT_MAP_YEARS, payload: { view, office, idx, year } });
 
-  return {};
+  return {
+    setVisualizationData,
+    resetVisualizationQuery,
+    setHeatMapYears,
+  };
 };
 
 export function useAppContext() {
