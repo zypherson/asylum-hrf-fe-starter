@@ -1,4 +1,4 @@
-export const appDataReducer = (state, action) => {
+export const filterReducer = (state, action) => {
   switch (action.type) {
     case 'One': {
       return { ...state };
