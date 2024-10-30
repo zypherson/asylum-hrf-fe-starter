@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
-import { filterReducer, initialFilterReducerState } from './filterReducer.js';
-import { initialVizReducerState, vizReducer } from './vizReducer.js';
+import { filterReducer, initialFilterReducerState } from './reducers/filterReducer.js';
+import { initialVizReducerState, vizReducer } from './reducers/vizReducer.js';
 
 const AppContext = createContext({});
 
