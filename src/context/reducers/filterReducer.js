@@ -12,26 +12,26 @@ export const initialFilterState = {
   geopolitical: [],
 };
 
-const filterReducer = (state = initialFilterState, action) => {
+export const filterReducer = (state = initialFilterState, action) => {
   switch (action.type) {
     case SET_DATE_FILTER_FORMAT: {
-      return {...state, isFiscalYear: action.payload};
+      return { ...state, isFiscalYear: action.payload };
     }
     case SET_ASYLUM_OFFICE_FILTER: {
-      return {...state, asylumOffice: action.payload};
+      return { ...state, asylumOffice: action.payload };
     }
     case SET_CONTINENT_FILTER: {
       return {
         ...state,
         continents: action.payload,
-        region: deriveRegion({...state, continents: action.payload}),
+        region: deriveRegion({ ...state, continents: action.payload }),
       };
     }
     case SET_GEOPOLITICAL_FILTER: {
       return {
         ...state,
         geopolitical: action.payload,
-        region: deriveRegion({...state, geopolitical: action.payload}),
+        region: deriveRegion({ ...state, geopolitical: action.payload }),
       };
     }
     default: {
@@ -41,7 +41,7 @@ const filterReducer = (state = initialFilterState, action) => {
 };
 
 // As regional filters are added, destructure them into this function and add the appropriate filter step
-const deriveRegion = ({continents, geopolitical}) => {
+const deriveRegion = ({ continents, geopolitical }) => {
   const territoryList = {};
   regions.forEach(region => (territoryList[region.territory] = false));
 
@@ -70,7 +70,7 @@ const deriveRegion = ({continents, geopolitical}) => {
  a selection has been made, but whether all options have been selected (to limit string length).
  NOTE - when the from/to query parameters are added, be sure they follow the yyyy-mm-dd string
  format that the back end is expecting */
-export const buildQueryString = ({isFiscalYear, asylumOffice, region}) => {
+export const buildQueryString = ({ isFiscalYear, asylumOffice, region }) => {
   let query = '?';
   const regionArray = Object.entries(region)
     .filter(territory => territory[1])
@@ -94,5 +94,3 @@ export const buildQueryString = ({isFiscalYear, asylumOffice, region}) => {
   }
   return query;
 };
-
-export default filterReducer;

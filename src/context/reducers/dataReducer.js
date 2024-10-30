@@ -18,27 +18,18 @@ export const initialDataState = {
   displayAdvancedSearch: false,
 };
 
-function dataReducer(state, action) {
+export const dataReducer = (state, action) => {
   switch (action.type) {
     case GET_DEFAULT_COMPARISONS: {
       //When memoized comparison data is fetched from the server to display on the site landing page
-      return {
-        ...state,
-        comparisonData: action.payload,
-      };
+      return { ...state, comparisonData: action.payload };
     }
     //When a filter querystring is passed to the server and case data is returned
     case GET_FILTERED_DATA: {
-      return {
-        ...state,
-        cases: action.payload,
-      };
+      return { ...state, cases: action.payload };
     }
     case GET_MOCK_FILTERED_DATA: {
-      return {
-        ...state,
-        cases: action.payload,
-      };
+      return { ...state, cases: action.payload };
     }
     case FILTER_SEARCH: {
       return {
@@ -64,6 +55,4 @@ function dataReducer(state, action) {
       return state;
     }
   }
-}
-
-export default dataReducer;
+};
