@@ -28,7 +28,7 @@ import {RESET_VISUALIZATION_QUERY, SET_HEAT_MAP_YEARS, SET_VISUALIZATION_DATA} f
 const startingYear = 2015;
 const currentYear = new Date().getFullYear();
 
-export const initialVizReducerState = {
+export const initialVizState = {
   timeSeriesAllData: {},
   timeSeriesAllYears: [startingYear, currentYear],
   officeHeatMapData: {},
