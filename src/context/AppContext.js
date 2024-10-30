@@ -1,23 +1,12 @@
 import { createContext, useContext, useReducer } from 'react';
-import { filterReducer } from './filterReducer.js';
-import { vizReducer } from './vizReducer.js';
+import { filterReducer, initialFilterReducerState } from './filterReducer.js';
+import { initialVizReducerState, vizReducer } from './vizReducer.js';
 
 const AppContext = createContext({});
 
-const defaultFilterReducer = {};
-const defaultVizReducer = {};
-
 const useAppContextProvider = () => {
-  const [filterData, filterReducerDispatch] = useReducer(
-    filterReducer,
-    defaultFilterReducer,
-    undefined
-  );
-  const [vizData, vizReducerDispatch] = useReducer(
-    vizReducer,
-    defaultVizReducer,
-    undefined
-  );
+  const [filterData, filterReducerDispatch] = useReducer(filterReducer, initialFilterReducerState, undefined);
+  const [vizData, vizReducerDispatch] = useReducer(vizReducer, initialVizReducerState, undefined);
 
   return {};
 };
@@ -29,7 +18,5 @@ export function useAppContext() {
 export function ProvideAppContext({ children }) {
   const contextValue = useAppContextProvider();
 
-  return (
-    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 }
