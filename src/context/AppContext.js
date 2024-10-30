@@ -3,8 +3,14 @@ import { appDataReducer } from './appDataReducer.js';
 
 const AppContext = createContext({});
 
+const defaultAddData = {};
+
 const useAppContextProvider = () => {
-  const [appData, appDataDispatch] = useReducer(appDataReducer, {});
+  const [appData, appDataDispatch] = useReducer(
+    appDataReducer,
+    defaultAddData,
+    undefined
+  );
 
   return { appData };
 };
