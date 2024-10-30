@@ -1,11 +1,11 @@
 import './App.css';
 import Footer from './components/layout/Footer.jsx';
 import Header from './components/layout/Header.jsx';
-import LandingPage from './components/pages/LandingPage';
+import LandingPage from './components/pages/Landing/index.jsx';
 import { DataVisPage } from './components/pages/DataVisPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsContainer } from './components/pages/GraphsContainer.jsx';
-import { NotFoundPage } from './components/pages/NotFoundPage.jsx';
+import { NotFoundPage } from './components/pages/NotFound/index.jsx';
 import * as React from 'react';
 import { ProvideAppContext } from './context/AppContext.jsx';
 
