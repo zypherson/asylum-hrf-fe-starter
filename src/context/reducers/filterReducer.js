@@ -1,3 +1,13 @@
+import {
+  FILTER_SEARCH,
+  GET_DEFAULT_COMPARISONS,
+  GET_FILTERED_DATA,
+  GET_MOCK_FILTERED_DATA,
+  PERFORM_ADVANCED_SEARCH,
+  RESET_CASE_DATA,
+  TOGGLE_ADVANCED_SEARCH,
+} from '../actionTypes/index.js';
+
 export const initialFilterReducerState = {
   cases: [],
   comparisonData: {
@@ -10,8 +20,36 @@ export const initialFilterReducerState = {
 
 export const filterReducer = (state, action) => {
   switch (action.type) {
-    case 'One': {
-      return { ...state };
+    case GET_DEFAULT_COMPARISONS: {
+      //When memoized comparison data is fetched from the server to display on the site landing page
+      return { ...state, comparisonData: action.payload };
+    }
+    //When a filter querystring is passed to the server and case data is returned
+    case GET_FILTERED_DATA: {
+      return { ...state, cases: action.payload };
+    }
+    case GET_MOCK_FILTERED_DATA: {
+      return { ...state, cases: action.payload };
+    }
+    case FILTER_SEARCH: {
+      return {
+        ...state,
+        filteredCases: action.payload,
+        filterCount: state.count + 1,
+      };
+    }
+    case PERFORM_ADVANCED_SEARCH: {
+      return {
+        ...state,
+        filteredCases: action.payload,
+        filterCount: state.count + 1,
+      };
+    }
+    case TOGGLE_ADVANCED_SEARCH: {
+      return { ...state, displayAdvancedSearch: action.payload };
+    }
+    case RESET_CASE_DATA: {
+      return { ...state, filterCount: 0, filteredCases: [] };
     }
     default: {
       return state;

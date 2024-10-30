@@ -1,3 +1,5 @@
+import {RESET_VISUALIZATION_QUERY, SET_HEAT_MAP_YEARS, SET_VISUALIZATION_DATA} from '../actionTypes';
+
 /*
       ------------------------------------------------------
 
@@ -22,83 +24,226 @@
 
       ------------------------------------------------------
 */
+
+const startingYear = 2015;
 const currentYear = new Date().getFullYear();
+
 export const initialVizReducerState = {
   timeSeriesAllData: {},
-  timeSeriesAllYears: [2015, currentYear],
+  timeSeriesAllYears: [startingYear, currentYear],
   officeHeatMapData: {},
-  officeHeatMapYears: [2015, currentYear],
+  officeHeatMapYears: [startingYear, currentYear],
   citizenshipMapAllData: {},
-  citizenshipMapAllYears: [2015, currentYear],
+  citizenshipMapAllYears: [startingYear, currentYear],
   offices: {
     'Los Angeles, CA': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'San Francisco, CA': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'New York, NY': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Houston, TX': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Chicago, IL': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Newark, NJ': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Arlington, VA': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Boston, MA': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'Miami, FL': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
     'New Orleans, LA': {
       timeSeriesData: {},
-      timeSeriesYears: [2015, currentYear],
+      timeSeriesYears: [startingYear, currentYear],
       citizenshipMapData: {},
-      citizenshipMapYears: [2015, currentYear],
+      citizenshipMapYears: [startingYear, currentYear],
     },
   },
 };
 
 export const vizReducer = (state, action) => {
+  let dataKey = '';
+  const office = action.payload.office;
+  const view = action.payload.view;
+
   switch (action.type) {
-    case 'One': {
-      return { ...state };
-    }
+    case RESET_VISUALIZATION_QUERY:
+      if (!office) {
+        switch (view) {
+          case 'time-series':
+            return {
+              ...state,
+              timeSeriesAllData: {},
+              timeSeriesAllYears: [2015, currentYear],
+            };
+          case 'office-heat-map':
+            return {
+              ...state,
+              officeHeatMapData: {},
+              officeHeatMapYears: [2015, currentYear],
+            };
+          case 'citizenship':
+            return {
+              ...state,
+              citizenshipMapAllData: {},
+              citizenshipMapAllYears: [2015, currentYear],
+            };
+          default:
+            return state;
+        }
+      } else {
+        switch (view) {
+          case 'time-series':
+            return {
+              ...state,
+              offices: {
+                ...state.offices,
+                [office]: {
+                  ...state.offices[office],
+                  timeSeriesData: {},
+                  timeSeriesYears: [2015, currentYear],
+                },
+              },
+            };
+          case 'citizenship':
+            return {
+              ...state,
+              offices: {
+                ...state.offices,
+                [office]: {
+                  ...state.offices[office],
+                  citizenshipMapData: {},
+                  citizenshipMapYears: [2015, currentYear],
+                },
+              },
+            };
+          default:
+            return state;
+        }
+      }
+    case SET_VISUALIZATION_DATA:
+      if (!office) {
+        switch (view) {
+          case 'time-series':
+            dataKey = 'timeSeriesAllData';
+            break;
+          case 'office-heat-map':
+            dataKey = 'officeHeatMapData';
+            break;
+          case 'citizenship':
+            dataKey = 'citizenshipMapAllData';
+            break;
+          default:
+            break;
+        }
+        return {
+          ...state,
+          [dataKey]: action.payload.data,
+        };
+      } else {
+        switch (view) {
+          case 'time-series':
+            dataKey = 'timeSeriesData';
+            break;
+          case 'citizenship':
+            dataKey = 'citizenshipMapData';
+            break;
+          default:
+            break;
+        }
+        return {
+          ...state,
+          offices: {
+            ...state.offices,
+            [office]: {
+              ...state.offices[office],
+              [dataKey]: action.payload.data,
+            },
+          },
+        };
+      }
+    case SET_HEAT_MAP_YEARS:
+      if (!office) {
+        switch (view) {
+          case 'time-series':
+            dataKey = 'timeSeriesAllYears';
+            break;
+          case 'office-heat-map':
+            dataKey = 'officeHeatMapYears';
+            break;
+          case 'citizenship':
+            dataKey = 'citizenshipMapAllYears';
+            break;
+          default:
+            dataKey = 'timeSeriesAllYears';
+            break;
+        }
+        return {
+          ...state,
+          [dataKey]: action.payload.idx === 0 ? [action.payload.year, state[dataKey][1]] : [state[dataKey][0], action.payload.year],
+        };
+      } else {
+        switch (view) {
+          case 'time-series':
+            dataKey = 'timeSeriesYears';
+            break;
+          case 'citizenship':
+            dataKey = 'citizenshipMapYears';
+            break;
+          default:
+            dataKey = 'timeSeriesYears';
+            break;
+        }
+        return {
+          ...state,
+          offices: {
+            ...state.offices,
+            [office]: {
+              ...state.offices[office],
+              [dataKey]:
+                action.payload.idx === 0 ? [action.payload.year, state.offices[office][dataKey][1]] : [state.offices[office][dataKey][0], action.payload.year],
+            },
+          },
+        };
+      }
     default: {
       return state;
     }
