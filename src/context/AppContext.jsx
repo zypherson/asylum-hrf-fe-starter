@@ -1,7 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import testData from '../data/test_data.json';
+import axios from 'axios';
 
 const AppContext = createContext({});
+
+const fiscalEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary';
+const citEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary';
 
 const useAppContextProvider = () => {
   const [citizenshipResults, setCitizenshipResults] = useState([]);
@@ -9,77 +12,50 @@ const useAppContextProvider = () => {
   const [graphData, setGraphData] = useState({});
 
   const getFiscalData = async () => {
-    // const fiscalDataRes = await axios.get(process.env.REACT_APP_API_URI);
-    // if (fiscalDataRes[0]) {
-    //   setFiscalData(fiscalDataRes[0]);
-    //   return;
-    // }
+    const fiscalDataRes = await axios.get(fiscalEndPoint);
 
-    if (testData) {
-      setFiscalData(testData);
+    if (fiscalDataRes.status !== 200) {
+      console.warn('Error retrieving Citizenship Results');
       return;
     }
+
+    const fiscData = fiscalDataRes.data;
+    if (fiscData) {
+      setFiscalData(fiscData);
+      return;
+    }
+
+    // if (testData) {
+    //   setFiscalData(testData);
+    //   return;
+    // }
     alert('Unable to retrieve Fiscal Data.');
   };
 
   const getCitizenshipResults = async () => {
-    // const citizenshipRes = await axios.get(process.env.REACT_APP_API_URI);
-    // if (citizenshipRes && Array.isArray(citizenshipRes)) {
-    //   setCitizenshipResults(citizenshipRes);
-    //   return;
-    // }
+    const citizenshipRes = await axios.get(citEndPoint);
 
-    if (testData.citizenshipResults) {
-      setCitizenshipResults(testData.citizenshipResults);
+    if (citizenshipRes.status !== 200) {
+      console.warn('Error retrieving Citizenship Results');
       return;
     }
+    const citData = citizenshipRes.data;
+    if (citData) {
+      setCitizenshipResults(citData);
+      return;
+    }
+
+    // if (testData.citizenshipResults) {
+    //   setCitizenshipResults(testData.citizenshipResults);
+    //   return;
+    // }
     alert('Unable to retrieve Citizenship Results.');
   };
 
   const updateQuery = () => {
-    Promise.all([getFiscalData(), getCitizenshipResults()]);
+    getFiscalData();
+    getCitizenshipResults();
   };
-
-  // const updateStateWithNewData = (years, view, office) => {
-  //   /*
-  //    |   Example request for once the `/summary` endpoint is up and running:           |
-  //    |                                                                                 |
-  //    |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
-  //    |                                                                                 |
-  //    |     so in axios we will say:                                                    |
-  //    |                                                                                 |
-  //    |       axios.get(`${url}/summary`, {                                             |
-  //    |         params: {                                                               |
-  //    |           from: <year_start>,                                                   |
-  //    |           to: <year_end>,                                                       |
-  //    |           office: <office>,       [ <-- this one is optional! when    ]         |
-  //    |         },                        [ querying by `all offices` there's ]         |
-  //    |       })                          [ no `office` param in the query    ]         |                                                                 _
-  //    -- Mack
-  //    */
-  //
-  //   if (office === 'all' || !office) {
-  //     axios
-  //       .get(process.env.REACT_APP_API_URI, {
-  //         // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-  //         params: { from: years[0], to: years[1] },
-  //       })
-  //       .then(result => {
-  //         stateSettingFn(view, office, testData); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-  //       })
-  //       .catch(err => console.error(err));
-  //   } else {
-  //     axios
-  //       .get(process.env.REACT_APP_API_URI, {
-  //         // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
-  //         params: { from: years[0], to: years[1], office: office },
-  //       })
-  //       .then(result => {
-  //         stateSettingFn(view, office, testData); // <-- `test_data` here can be simply replaced by `result.data` in prod!
-  //       })
-  //       .catch(err => console.error(err));
-  //   }
-  // };
 
   const clearQuery = () => {
     setCitizenshipResults([]);
