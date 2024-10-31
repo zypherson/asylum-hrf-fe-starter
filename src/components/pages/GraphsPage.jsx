@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { getMapView, mapTypes } from './DataVisualizations/getMapView.jsx';
+import { useAppContext } from '../../context/AppContext.jsx';
 
 const { ScatterPlot, ChoroplethMap, HeatMap } = mapTypes;
 
 export const GraphsPage = () => {
+  const { updateQuery, clearQuery } = useAppContext();
+
   const [mapView, setMapView] = useState(ScatterPlot);
-
-  const updateQuery = () => {};
-
-  const clearQuery = () => {};
 
   return (
     <div className=''>

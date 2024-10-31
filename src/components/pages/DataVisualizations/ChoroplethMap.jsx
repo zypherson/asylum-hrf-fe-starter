@@ -1,12 +1,15 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import testData from '../../../data/test_data.json';
-import { capitalizer } from '../../../utils/capitalizer.js';
+import capitalizr from 'capitalizr';
+import { useAppContext } from '../../../context/AppContext.jsx';
 
 export const ChoroplethMap = () => {
-  const locations = testData[0].citizenshipResults.map(({ citizenship }) => citizenship);
-  const z = testData[0].citizenshipResults.map(({ granted }) => granted.toFixed(2));
-  const text = locations.map(l => l.toLowerCase()).map(l => l.split(' ').map(capitalizer).join(' '));
+  const { graphData } = useAppContext();
+
+  const citizenshipResults = graphData?.citizenshipResults ?? [];
+  const locations = citizenshipResults.map(({ citizenship }) => citizenship);
+  const z = citizenshipResults.map(({ granted }) => granted.toFixed(2));
+  const text = locations.map(l => l.toLowerCase()).map(l => l.split(' ').map(capitalizr).join(' '));
 
   return (
     <div className='flex flex-col align-middle'>

@@ -1,33 +1,103 @@
-import { createContext, useContext, useReducer } from 'react';
-import { initialVizState, vizReducer } from './reducers/vizReducer.js';
-import { dataReducer, initialDataState } from './reducers/dataReducer.js';
-import { filterReducer, initialFilterState } from './reducers/filterReducer.js';
-import { RESET_VISUALIZATION_QUERY, SET_HEAT_MAP_YEARS, SET_VISUALIZATION_DATA } from './actionTypes/index.js';
+import { createContext, useContext, useEffect, useState } from 'react';
+import testData from '../data/test_data.json';
 
 const AppContext = createContext({});
 
 const useAppContextProvider = () => {
-  const [data, dataDispatch] = useReducer(dataReducer, initialDataState, undefined);
-  const [filterData, filterReducerDispatch] = useReducer(filterReducer, initialFilterState, undefined);
-  const [vizData, vizReducerDispatch] = useReducer(vizReducer, initialVizState, undefined);
+  const [citizenshipResults, setCitizenshipResults] = useState([]);
+  const [fiscalData, setFiscalData] = useState({});
+  const [graphData, setGraphData] = useState({});
 
-  /**
-   * Consider breaking this down into separate actionCreator files if it becomes overly crowded!
-   * Remember separation of concerns.
-   * Import the action-types and export an action-creator function for each.
-   * Each synchronous function should return an action object with a type and a payload -- these will be passed to the reducer.
-   * Each asynchronous function should dispatch its action object (type/payload) to the reducer.
-   */
-  const setVisualizationData = (view, office, data) => vizReducerDispatch({ type: SET_VISUALIZATION_DATA, payload: { view, office, data } });
+  const getFiscalData = async () => {
+    // const fiscalDataRes = await axios.get(process.env.REACT_APP_API_URI);
+    // if (fiscalDataRes[0]) {
+    //   setFiscalData(fiscalDataRes[0]);
+    //   return;
+    // }
 
-  const resetVisualizationQuery = (view, office) => vizReducerDispatch({ type: RESET_VISUALIZATION_QUERY, payload: { view, office } });
+    if (testData) {
+      setFiscalData(testData);
+      return;
+    }
+    alert('Unable to retrieve Fiscal Data.');
+  };
 
-  const setHeatMapYears = (view, office, idx, year) => vizReducerDispatch({ type: SET_HEAT_MAP_YEARS, payload: { view, office, idx, year } });
+  const getCitizenshipResults = async () => {
+    // const citizenshipRes = await axios.get(process.env.REACT_APP_API_URI);
+    // if (citizenshipRes && Array.isArray(citizenshipRes)) {
+    //   setCitizenshipResults(citizenshipRes);
+    //   return;
+    // }
+
+    if (testData.citizenshipResults) {
+      setCitizenshipResults(testData.citizenshipResults);
+      return;
+    }
+    alert('Unable to retrieve Citizenship Results.');
+  };
+
+  const updateQuery = () => {
+    Promise.all([getFiscalData(), getCitizenshipResults()]);
+  };
+
+  // const updateStateWithNewData = (years, view, office) => {
+  //   /*
+  //    |   Example request for once the `/summary` endpoint is up and running:           |
+  //    |                                                                                 |
+  //    |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
+  //    |                                                                                 |
+  //    |     so in axios we will say:                                                    |
+  //    |                                                                                 |
+  //    |       axios.get(`${url}/summary`, {                                             |
+  //    |         params: {                                                               |
+  //    |           from: <year_start>,                                                   |
+  //    |           to: <year_end>,                                                       |
+  //    |           office: <office>,       [ <-- this one is optional! when    ]         |
+  //    |         },                        [ querying by `all offices` there's ]         |
+  //    |       })                          [ no `office` param in the query    ]         |                                                                 _
+  //    -- Mack
+  //    */
+  //
+  //   if (office === 'all' || !office) {
+  //     axios
+  //       .get(process.env.REACT_APP_API_URI, {
+  //         // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+  //         params: { from: years[0], to: years[1] },
+  //       })
+  //       .then(result => {
+  //         stateSettingFn(view, office, testData); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+  //       })
+  //       .catch(err => console.error(err));
+  //   } else {
+  //     axios
+  //       .get(process.env.REACT_APP_API_URI, {
+  //         // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+  //         params: { from: years[0], to: years[1], office: office },
+  //       })
+  //       .then(result => {
+  //         stateSettingFn(view, office, testData); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+  //       })
+  //       .catch(err => console.error(err));
+  //   }
+  // };
+
+  const clearQuery = () => {
+    setCitizenshipResults([]);
+    setFiscalData({});
+    setGraphData({});
+  };
+
+  const getYears = () => graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
+
+  useEffect(() => {
+    setGraphData({ ...fiscalData, citizenshipResults });
+  }, [fiscalData, citizenshipResults]);
 
   return {
-    setVisualizationData,
-    resetVisualizationQuery,
-    setHeatMapYears,
+    graphData,
+    updateQuery,
+    clearQuery,
+    getYears,
   };
 };
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import testData from '../../../data/test_data.json';
+import { useAppContext } from '../../../context/AppContext.jsx';
 
 export const HeatMap = () => {
-  const officeNames = testData[0].yearResults.map(({ yearData }) => yearData.map(({ office }) => office))[0];
-  const years = testData[0].yearResults.map(({ fiscal_year }) => Number(fiscal_year));
-  const grantRates = testData[0].yearResults.map(r => r.yearData.map(({ granted }) => granted));
+  const { graphData, getYears } = useAppContext();
 
-  const data = { x: officeNames, y: years, z: grantRates };
+  const yearResults = graphData?.yearResults ?? [];
+  const officeNames = yearResults.map(({ yearData }) => yearData.map(({ office }) => office))[0];
+  const grantRates = yearResults.map(r => r.yearData.map(({ granted }) => granted));
+  const data = { x: officeNames, y: getYears(), z: grantRates };
 
   return (
     <div>

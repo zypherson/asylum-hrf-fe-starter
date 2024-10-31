@@ -1,10 +1,10 @@
 import Plot from 'react-plotly.js';
-import testData from '../../../data/test_data.json';
+import { useAppContext } from '../../../context/AppContext.jsx';
 
 export const ScatterPlot = () => {
-  const years = testData[0].yearResults.map(({ fiscal_year }) => Number(fiscal_year));
-  const grantRates = testData[0].yearResults.map(({ granted }) => granted);
-  // const grantRates = [10, 15, 20, 25, 30, 35, 40, 50];
+  const { graphData, getYears } = useAppContext();
+
+  const grantRates = graphData?.yearResults?.map(({ granted }) => granted) ?? [];
 
   return (
     <div className='flex flex-col align-middle min-h-[400px]'>
@@ -12,7 +12,7 @@ export const ScatterPlot = () => {
       <Plot
         data={[
           {
-            x: years,
+            x: getYears(),
             y: grantRates,
             type: 'scatter',
             mode: 'lines+markers',
