@@ -1,57 +1,45 @@
-import { HeatMap } from './DataVisualizations/HeatMap.jsx';
-import { ChoroplethMap } from './DataVisualizations/ChoroplethMap.jsx';
-import { ScatterPlot } from './DataVisualizations/ScatterPlotMap.jsx';
 import { useState } from 'react';
+import { getMapView, mapTypes } from './DataVisualizations/getMapView.jsx';
 
-const mapTypes = {
-  ScatterPlot: 'SCATTER',
-  HeatMap: 'HEAT-MAP',
-  ChoroplethMap: 'CHOROPLETH-MAP',
-};
+const { ScatterPlot, ChoroplethMap, HeatMap } = mapTypes;
 
 export const GraphsContainer = () => {
-  const [mapView, setMapView] = useState(mapTypes.ScatterPlot);
+  const [mapView, setMapView] = useState(ScatterPlot);
 
-  const getMapView = () => {
-    switch (mapView) {
-      case mapTypes.ScatterPlot: {
-        return <ScatterPlot />;
-      }
-      case mapTypes.HeatMap: {
-        return <HeatMap />;
-      }
-      case mapTypes.ChoroplethMap: {
-        return <ChoroplethMap />;
-      }
-      default: {
-        throw new Error(`Unhandled map type: mapView: ${mapView}`);
-      }
-    }
-  };
+  const updateQuery = () => {};
+
+  const clearQuery = () => {};
 
   return (
-    <div>
-      <h2>Graphs Container Page</h2>
-      <section className='plot-buttons flex flex-col gap-4'>
-        <button className='scatter' disabled={mapView === mapTypes.ScatterPlot} onClick={() => setMapView(mapTypes.ScatterPlot)}>
-          Scatter
-        </button>
-        <button className='heat-map' disabled={mapView === mapTypes.HeatMap} onClick={() => setMapView(mapTypes.HeatMap)}>
-          Heat Map
-        </button>
-        <button className='choropleth-map' disabled={mapView === mapTypes.ChoroplethMap} onClick={() => setMapView(mapTypes.ChoroplethMap)}>
-          Choropleth Map
-        </button>
-      </section>
-      <section className='query-buttons flex flex-col gap-4'>
-        <button className='update-query' onClick={() => {}}>
-          Update Query
-        </button>
-        <button className='clear-query' onClick={() => {}}>
-          Clear Query
-        </button>
-      </section>
-      {getMapView()}
+    <div className=''>
+      <h2 className=''>Graphs Container Page</h2>
+
+      <div className='plot-main flex w-[70%] gap-24 mx-auto align-middle justify-center'>
+        <section className='maps'>{getMapView(mapView)}</section>
+
+        <section className='data-buttons flex flex-col justify-center gap-4'>
+          <section className='plot-buttons flex flex-col gap-2'>
+            <button className='scatter-plot bg-[#666555] text-amber-50 p-1' disabled={mapView === ScatterPlot} onClick={() => setMapView(ScatterPlot)}>
+              Scatter
+            </button>
+            <button className='heat-map bg-[#666555] text-amber-50 p-1' disabled={mapView === HeatMap} onClick={() => setMapView(HeatMap)}>
+              Heat Map
+            </button>
+            <button className='choropleth-map bg-[#666555] text-amber-50 p-1' disabled={mapView === ChoroplethMap} onClick={() => setMapView(ChoroplethMap)}>
+              Choropleth Map
+            </button>
+          </section>
+
+          <section className='query-buttons flex flex-col gap-2'>
+            <button className='update-query border-amber-800 bg-white' onClick={updateQuery}>
+              Update Query
+            </button>
+            <button className='clear-query outline-1 bg-white' onClick={clearQuery}>
+              Clear Query
+            </button>
+          </section>
+        </section>
+      </div>
     </div>
   );
 };
