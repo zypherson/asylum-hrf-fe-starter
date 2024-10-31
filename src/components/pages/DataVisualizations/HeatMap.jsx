@@ -1,16 +1,13 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import testData from '../../../data/test_data.json';
 
 export const HeatMap = () => {
-  const data = {
-    x: ['Office A', 'Office B', 'Office C'],
-    y: ['2018', '2019', '2020'],
-    z: [
-      [0.2, 0.4, 0.6], // Grant rate data for 2018
-      [0.5, 0.3, 0.7], // Grant rate data for 2019
-      [0.8, 0.2, 0.5], // Grant rate data for 2020
-    ],
-  };
+  const officeNames = testData[0].yearResults.map(({ yearData }) => yearData.map(({ office }) => office))[0];
+  const years = testData[0].yearResults.map(({ fiscal_year }) => Number(fiscal_year));
+  const grantRates = testData[0].yearResults.map(r => r.yearData.map(({ granted }) => granted));
+
+  const data = { x: officeNames, y: years, z: grantRates };
 
   return (
     <div>

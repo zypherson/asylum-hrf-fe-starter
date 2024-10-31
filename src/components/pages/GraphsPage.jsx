@@ -3,7 +3,7 @@ import { getMapView, mapTypes } from './DataVisualizations/getMapView.jsx';
 
 const { ScatterPlot, ChoroplethMap, HeatMap } = mapTypes;
 
-export const GraphsContainer = () => {
+export const GraphsPage = () => {
   const [mapView, setMapView] = useState(ScatterPlot);
 
   const updateQuery = () => {};

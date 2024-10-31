@@ -1,11 +1,13 @@
 import Plot from 'react-plotly.js';
+import testData from '../../../data/test_data.json';
 
 export const ScatterPlot = () => {
-  const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
-  const grantRates = [10, 15, 20, 25, 30, 35, 40, 50];
+  const years = testData[0].yearResults.map(({ fiscal_year }) => Number(fiscal_year));
+  const grantRates = testData[0].yearResults.map(({ granted }) => granted);
+  // const grantRates = [10, 15, 20, 25, 30, 35, 40, 50];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '400px' }}>
+    <div className='flex flex-col align-middle min-h-[400px]'>
       <h2>Asylum Grant Rate Over Time</h2>
       <Plot
         data={[

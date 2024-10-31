@@ -4,7 +4,7 @@ import Header from './components/layout/Header.jsx';
 import LandingPage from './components/pages/Landing/index.jsx';
 import { DataVisPage } from './components/pages/DataVisPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { GraphsContainer } from './components/pages/GraphsContainer.jsx';
+import { GraphsPage } from './components/pages/GraphsPage.jsx';
 import { NotFoundPage } from './components/pages/NotFound/index.jsx';
 import * as React from 'react';
 import { ProvideAppContext } from './context/AppContext.jsx';
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/graphs',
-    element: <GraphsContainer />,
+    element: <GraphsPage />,
     errorElement: <NotFoundPage />,
   },
   {
