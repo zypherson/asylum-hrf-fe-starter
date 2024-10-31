@@ -3,7 +3,7 @@ import lineGraph from '../../../assets/line-graph.png';
 import barGraph from '../../../assets/bar-graph.png';
 import paperStack from '../../../assets/paper-stack.jpg';
 
-export default function LandingPage(props) {
+export const LandingPage = () => {
   const scrollToTop = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -109,4 +109,4 @@ export default function LandingPage(props) {
       </section>
     </div>
   );
-}
+};

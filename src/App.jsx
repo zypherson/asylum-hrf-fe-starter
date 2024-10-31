@@ -1,8 +1,7 @@
 import './App.css';
 import Footer from './components/layout/Footer.jsx';
 import Header from './components/layout/Header.jsx';
-import LandingPage from './components/pages/Landing/index.jsx';
-import { DataVisPage } from './components/pages/DataVisPage';
+import { LandingPage } from './components/pages/Landing';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsPage } from './components/pages/GraphsPage.jsx';
 import { NotFoundPage } from './components/pages/NotFound/index.jsx';
@@ -18,11 +17,6 @@ const router = createBrowserRouter([
   {
     path: '/graphs',
     element: <GraphsPage />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: '/data-vis',
-    element: <DataVisPage />,
     errorElement: <NotFoundPage />,
   },
 ]);
