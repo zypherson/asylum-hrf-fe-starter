@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import testData from '../data/test_data.json';
 
 const AppContext = createContext({});
 
@@ -15,7 +16,7 @@ const useAppContextProvider = () => {
     const fiscalDataRes = await axios.get(fiscalEndPoint);
 
     if (fiscalDataRes.status !== 200) {
-      console.warn('Error retrieving Citizenship Results');
+      alert('Error retrieving Citizenship Results.');
       return;
     }
 
@@ -24,11 +25,6 @@ const useAppContextProvider = () => {
       setFiscalData(fiscData);
       return;
     }
-
-    // if (testData) {
-    //   setFiscalData(testData);
-    //   return;
-    // }
     alert('Unable to retrieve Fiscal Data.');
   };
 
@@ -36,7 +32,7 @@ const useAppContextProvider = () => {
     const citizenshipRes = await axios.get(citEndPoint);
 
     if (citizenshipRes.status !== 200) {
-      console.warn('Error retrieving Citizenship Results');
+      alert('Error retrieving Citizenship Results.');
       return;
     }
     const citData = citizenshipRes.data;
@@ -44,11 +40,6 @@ const useAppContextProvider = () => {
       setCitizenshipResults(citData);
       return;
     }
-
-    // if (testData.citizenshipResults) {
-    //   setCitizenshipResults(testData.citizenshipResults);
-    //   return;
-    // }
     alert('Unable to retrieve Citizenship Results.');
   };
 
@@ -64,6 +55,11 @@ const useAppContextProvider = () => {
   };
 
   const getYears = () => graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
+
+  useEffect(() => {
+    setFiscalData(testData);
+    setCitizenshipResults(testData.citizenshipResults);
+  }, []);
 
   useEffect(() => {
     setGraphData({ ...fiscalData, citizenshipResults });
