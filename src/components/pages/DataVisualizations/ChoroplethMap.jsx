@@ -1,8 +1,7 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 import testData from '../../../data/test_data.json';
-
-const capitalizer = word => word.charAt(0).toUpperCase() + word.slice(1);
+import { capitalizer } from '../../../utils/capitalizer.js';
 
 export const ChoroplethMap = () => {
   const locations = testData[0].citizenshipResults.map(({ citizenship }) => citizenship);
@@ -10,7 +9,7 @@ export const ChoroplethMap = () => {
   const text = locations.map(l => l.toLowerCase()).map(l => l.split(' ').map(capitalizer).join(' '));
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className='flex flex-col align-middle'>
       <h2>Choropleth Map</h2>
       <Plot
         data={[
