@@ -34,7 +34,7 @@ export const GraphsContainer = () => {
             <button className='update-query border-amber-800 bg-white' onClick={updateQuery}>
               Update Query
             </button>
-            <button className='clear-query outline-1 bg-white' onClick={clearQuery}>
+            <button className='clear-query bg-white' onClick={clearQuery}>
               Clear Query
             </button>
           </section>
