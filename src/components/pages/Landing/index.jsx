@@ -49,8 +49,12 @@ export const LandingPage = () => {
           </div>
 
           <div className='flex align-center mx-auto gap-8'>
-            <button className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>View the Data</button>
-            <button className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>Download the Data</button>
+            <button onClick={() => history.push('/graphs')} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
+              View the Data
+            </button>
+            <button onClick={() => {}} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
+              Download the Data
+            </button>
           </div>
         </div>
       </section>

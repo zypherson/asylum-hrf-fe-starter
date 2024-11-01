@@ -7,9 +7,9 @@ export const LoggingButtons = () => {
 
   const handleLogging = () => {
     if (isAuthenticated) {
-      loginWithRedirect();
-    } else {
       logout({ logoutParams: { returnTo: window.location.origin } });
+    } else {
+      loginWithRedirect();
     }
   };
 
