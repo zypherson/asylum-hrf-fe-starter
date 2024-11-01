@@ -1,4 +1,6 @@
 import Logo from '../../assets/logo.png';
+import { LogoutButton } from '../common/LogoutButton.jsx';
+import { LoginButton } from '../common/LoginButton.jsx';
 
 export default function Header() {
   return (
@@ -15,6 +17,8 @@ export default function Header() {
         <a href='/graphs' className='text-[#E2F0F7]'>
           Graphs
         </a>
+        <LoginButton />
+        <LogoutButton />
       </div>
     </header>
   );
