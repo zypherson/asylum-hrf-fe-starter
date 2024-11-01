@@ -5,8 +5,14 @@ import paperStack from '../../../assets/paper-stack.jpg';
 
 export const LandingPage = () => {
   const scrollToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    let scrollStep = -window.scrollY / 20; // Adjust the divisor for speed
+    let scrollInterval = setInterval(() => {
+      if (window.scrollY === 0) {
+        clearInterval(scrollInterval);
+      } else {
+        window.scrollBy(0, scrollStep);
+      }
+    }, 10); // Adjust the interval time for smoothness
   };
 
   const handleReadMore = () => {
