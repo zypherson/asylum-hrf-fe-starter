@@ -9,6 +9,10 @@ export const LandingPage = () => {
     document.documentElement.scrollTop = 0;
   };
 
+  const handleReadMore = () => {
+    window.location.href = 'https://www.humanrightsfirst.org/';
+  };
+
   return (
     <div className='flex flex-col w-[100vw]'>
       <section className='flex bg-[#666555] p-10'>
@@ -97,7 +101,7 @@ export const LandingPage = () => {
       </section>
 
       <section className='read-more-section'>
-        <button className='bg-[#666555] text-white px-4 py-2' onClick={() => 'https://www.humanrightsfirst.org/'}>
+        <button className='bg-[#666555] text-white px-4 py-2' onClick={handleReadMore}>
           Read More
         </button>
       </section>

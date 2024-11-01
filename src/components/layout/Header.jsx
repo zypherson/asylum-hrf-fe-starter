@@ -1,6 +1,5 @@
 import Logo from '../../assets/logo.png';
-import { LogoutButton } from '../common/LogoutButton.jsx';
-import { LoginButton } from '../common/LoginButton.jsx';
+import { LoggingButtons } from '../common/LoggingButtons.jsx';
 
 export default function Header() {
   return (
@@ -10,15 +9,14 @@ export default function Header() {
           <img className='w-[100px]' src={Logo} alt='HRF logo white' />
         </a>
       </div>
-      <div className='flex pt-4'>
-        <a href='/' className='text-[#E2F0F7] pr-[75px]'>
+      <div className='flex items-center pt-4 gap-16'>
+        <a href='/' className='flex text-[#E2F0F7]'>
           Home
         </a>
         <a href='/graphs' className='text-[#E2F0F7]'>
           Graphs
         </a>
-        <LoginButton />
-        <LogoutButton />
+        <LoggingButtons />
       </div>
     </header>
   );
