@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import testData from '../data/test_data.json';
+import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 const AppContext = createContext({});
 
@@ -8,10 +9,10 @@ const fiscalEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummar
 const citEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary';
 
 const useAppContextProvider = () => {
-  const [citizenshipResults, setCitizenshipResults] = useState([]);
-  const [fiscalData, setFiscalData] = useState({});
-  const [graphData, setGraphData] = useState({});
+  const [graphData, setGraphData] = useState(testData);
   const [isDataLoading, setIsDataLoading] = useState(false);
+
+  useLocalStorage({ graphData, setGraphData });
 
   const getFiscalData = async () => {
     const fiscalDataRes = await axios.get(fiscalEndPoint);
@@ -23,8 +24,7 @@ const useAppContextProvider = () => {
 
     const fiscData = fiscalDataRes.data;
     if (fiscData) {
-      setFiscalData(fiscData);
-      return;
+      return fiscData;
     }
     alert('Unable to retrieve Fiscal Data.');
   };
@@ -38,38 +38,37 @@ const useAppContextProvider = () => {
     }
     const citData = citizenshipRes.data;
     if (citData) {
-      setCitizenshipResults(citData);
-      return;
+      return citData;
     }
     alert('Unable to retrieve Citizenship Results.');
   };
 
   const updateQuery = async () => {
     setIsDataLoading(true);
-    await getFiscalData();
-    await getCitizenshipResults();
+  };
+
+  const fetchData = async () => {
+    const fiscData = await getFiscalData();
+    const citizenshipResults = await getCitizenshipResults();
+    setGraphData({ ...fiscData, citizenshipResults });
     setIsDataLoading(false);
   };
 
   const clearQuery = () => {
-    setCitizenshipResults([]);
-    setFiscalData({});
     setGraphData({});
   };
 
   const getYears = () => graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
 
   useEffect(() => {
-    setFiscalData(testData);
-    setCitizenshipResults(testData.citizenshipResults);
-  }, []);
-
-  useEffect(() => {
-    setGraphData({ ...fiscalData, citizenshipResults });
-  }, [fiscalData, citizenshipResults]);
+    if (isDataLoading) {
+      fetchData();
+    }
+  }, [isDataLoading]);
 
   return {
     graphData,
+    setGraphData,
     isDataLoading,
     updateQuery,
     clearQuery,

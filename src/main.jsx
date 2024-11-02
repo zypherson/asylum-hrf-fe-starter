@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { App } from './App.jsx';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { ProvideAppContext } from './context/AppContext.jsx';
 // import 'dotenv/config.js';
 
 createRoot(document.getElementById('root')).render(
@@ -10,6 +11,8 @@ createRoot(document.getElementById('root')).render(
     clientId={'X6brpU1FkHIgivRrcnxbM4elrx56Flaz'}
     authorizationParams={{ redirect_uri: window.location.origin }}
   >
-    <App />
+    <ProvideAppContext>
+      <App />
+    </ProvideAppContext>
   </Auth0Provider>
 );
