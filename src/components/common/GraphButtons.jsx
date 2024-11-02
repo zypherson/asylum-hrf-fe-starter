@@ -7,24 +7,24 @@ export const GraphButtons = ({ mapView, setMapView }) => {
   const { updateQuery, clearQuery } = useAppContext();
 
   return (
-    <section className='data-buttons flex flex-col justify-center gap-4'>
-      <section className='plot-buttons flex flex-col gap-2'>
-        <button className='scatter-plot bg-[#666555] text-amber-50 p-1' disabled={mapView === ScatterPlot} onClick={() => setMapView(ScatterPlot)}>
-          Scatter
+    <section className='data-buttons flex flex-col justify-center gap-6'>
+      <section className='plot-buttons flex flex-col gap-1'>
+        <button className='scatter-plot bg-white p-1 text-black border-2' disabled={mapView === ScatterPlot} onClick={() => setMapView(ScatterPlot)}>
+          Time Series
         </button>
-        <button className='heat-map bg-[#666555] text-amber-50 p-1' disabled={mapView === HeatMap} onClick={() => setMapView(HeatMap)}>
-          Heat Map
+        <button className='heat-map bg-white p-1 text-black border-2' disabled={mapView === HeatMap} onClick={() => setMapView(HeatMap)}>
+          USCIS Asylum Offices Heat Map
         </button>
-        <button className='choropleth-map bg-[#666555] text-amber-50 p-1' disabled={mapView === ChoroplethMap} onClick={() => setMapView(ChoroplethMap)}>
-          Choropleth Map
+        <button className='choropleth-map bg-white p-1 text-black border-2' disabled={mapView === ChoroplethMap} onClick={() => setMapView(ChoroplethMap)}>
+          Citizenship of Asylum Seeker
         </button>
       </section>
 
-      <section className='query-buttons flex flex-col gap-2'>
-        <button className='update-query border-amber-800 bg-white' onClick={updateQuery}>
+      <section className='query-buttons flex flex-col gap-1'>
+        <button className='update-query bg-[#666555] text-amber-50' onClick={updateQuery}>
           Update Query
         </button>
-        <button className='clear-query bg-white' onClick={clearQuery}>
+        <button className='clear-query bg-[#666555] text-amber-50' onClick={clearQuery}>
           Clear Query
         </button>
       </section>
