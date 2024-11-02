@@ -1,6 +1,6 @@
-import { ScatterPlot } from './ScatterPlotMap.jsx';
-import { HeatMap } from './HeatMap.jsx';
-import { ChoroplethMap } from './ChoroplethMap.jsx';
+import { ScatterPlot } from '../../common/ScatterPlotMap.jsx';
+import { HeatMap } from '../../common/HeatMap.jsx';
+import { ChoroplethMap } from '../../common/ChoroplethMap.jsx';
 
 export const mapTypes = {
   ScatterPlot: 'SCATTER-PLOT',

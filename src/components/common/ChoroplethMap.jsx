@@ -1,7 +1,7 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 import capitalizr from 'capitalizr';
-import { useAppContext } from '../../../context/AppContext.jsx';
+import { useAppContext } from '../../context/AppContext.jsx';
 
 export const ChoroplethMap = () => {
   const { graphData } = useAppContext();
@@ -13,7 +13,6 @@ export const ChoroplethMap = () => {
 
   return (
     <div className='flex flex-col align-middle'>
-      <h2>Choropleth Map</h2>
       <Plot
         data={[
           {
@@ -40,7 +39,7 @@ export const ChoroplethMap = () => {
           },
         ]}
         layout={{
-          title: 'Static Grant Rates by Country',
+          title: 'USCIS Asylum Office Grant Rates by Citizenship of Asylum Seeker',
           geo: {
             showlakes: true,
             lakecolor: 'rgb(127,205,225)',
@@ -48,6 +47,7 @@ export const ChoroplethMap = () => {
           height: 500,
           width: 700,
           text: 'capitalize',
+          paper_bgcolor: '#f9f9f9',
         }}
       />
     </div>

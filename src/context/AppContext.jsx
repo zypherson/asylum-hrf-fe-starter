@@ -11,6 +11,7 @@ const useAppContextProvider = () => {
   const [citizenshipResults, setCitizenshipResults] = useState([]);
   const [fiscalData, setFiscalData] = useState({});
   const [graphData, setGraphData] = useState({});
+  const [isDataLoading, setIsDataLoading] = useState(false);
 
   const getFiscalData = async () => {
     const fiscalDataRes = await axios.get(fiscalEndPoint);
@@ -43,9 +44,11 @@ const useAppContextProvider = () => {
     alert('Unable to retrieve Citizenship Results.');
   };
 
-  const updateQuery = () => {
-    getFiscalData();
-    getCitizenshipResults();
+  const updateQuery = async () => {
+    setIsDataLoading(true);
+    await getFiscalData();
+    await getCitizenshipResults();
+    setIsDataLoading(false);
   };
 
   const clearQuery = () => {
@@ -67,6 +70,7 @@ const useAppContextProvider = () => {
 
   return {
     graphData,
+    isDataLoading,
     updateQuery,
     clearQuery,
     getYears,

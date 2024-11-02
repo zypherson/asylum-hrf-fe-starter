@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import { useAppContext } from '../../../context/AppContext.jsx';
+import { useAppContext } from '../../context/AppContext.jsx';
 
 export const HeatMap = () => {
   const { graphData, getYears } = useAppContext();
@@ -13,7 +13,6 @@ export const HeatMap = () => {
 
   return (
     <div>
-      <h2>Grant Rate Data</h2>
       <Plot
         data={[
           {
@@ -36,10 +35,10 @@ export const HeatMap = () => {
           },
         ]}
         layout={{
-          title: 'Grant Rate Data',
+          title: 'USCIS Asylum Office Grant Rates by Year and Office',
           height: 500,
           width: 700,
-          paper_bgcolor: 'white',
+          paper_bgcolor: '#f9f9f9',
           hoverlabel: {
             bordercolor: 'white',
           },

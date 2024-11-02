@@ -20,7 +20,7 @@ export const LandingPage = () => {
   };
 
   return (
-    <div className='flex flex-col w-[100vw]'>
+    <div className='flex flex-col w-[100vw] bg-[#f9f9f9]'>
       <section className='flex bg-[#666555] p-10'>
         <div className='flex flex-col mx-auto'>
           <h1 className='text-6xl mb-8 text-white'>Asylum Office Grant Rate Tracker</h1>
@@ -32,7 +32,7 @@ export const LandingPage = () => {
       </section>
 
       <section className='graphs-section flex flex-col pt-10'>
-        <div className='flex flex-col'>
+        <div className='flex flex-col '>
           <div className='flex justify-center m-14 gap-20 text-2xl'>
             <div className='flex flex-col gap-3'>
               <img src={barGraph} alt='' className='h-[300px] w-[500px]' />
@@ -59,7 +59,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className='middle-section flex'>
+      <section className='middle-section flex '>
         <div className='flex-1 hrf-img-container content-center p-20'>
           <img src={paperStack} alt='Human Rights First' className='hrf-img rounded-2xl h-[70%] w-[100%]' />
         </div>
@@ -72,7 +72,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className='insights-section flex flex-col gap-16'>
+      <section className='insights-section flex flex-col gap-16 '>
         <div className='insights-section-header'>
           <h3 className='text-5xl'>Systemic Disparity Insights</h3>
         </div>

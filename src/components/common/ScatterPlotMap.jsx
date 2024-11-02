@@ -1,5 +1,5 @@
 import Plot from 'react-plotly.js';
-import { useAppContext } from '../../../context/AppContext.jsx';
+import { useAppContext } from '../../context/AppContext.jsx';
 
 export const ScatterPlot = () => {
   const { graphData, getYears } = useAppContext();
@@ -8,7 +8,6 @@ export const ScatterPlot = () => {
 
   return (
     <div className='flex flex-col align-middle min-h-[400px]'>
-      <h2>Asylum Grant Rate Over Time</h2>
       <Plot
         data={[
           {
@@ -20,7 +19,7 @@ export const ScatterPlot = () => {
           },
         ]}
         layout={{
-          title: 'Asylum Grant Rate Over Time',
+          title: 'Asylum Grant Rate for All USCIS Asylum Offices Over Time',
           xaxis: { title: 'Fiscal Year' },
           yaxis: { title: 'Grant Rate (%)', range: [0, 100] },
           height: 500,

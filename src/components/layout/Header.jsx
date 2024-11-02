@@ -1,5 +1,5 @@
 import Logo from '../../assets/logo.png';
-import { LoggingButtons } from '../common/LoggingButtons.jsx';
+import { LoggingButtons } from '../../auth/LoggingButtons.jsx';
 
 export default function Header() {
   return (
