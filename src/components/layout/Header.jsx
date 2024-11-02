@@ -9,7 +9,7 @@ export default function Header() {
           <img className='w-[100px]' src={Logo} alt='HRF logo white' />
         </a>
       </div>
-      <div className='flex items-center pt-4 gap-16'>
+      <div className='flex items-center py-4 gap-16'>
         <a href='/' className='flex text-[#E2F0F7]'>
           Home
         </a>

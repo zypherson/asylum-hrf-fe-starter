@@ -2,8 +2,11 @@ import pieChart from '../../../assets/pie-chart.png';
 import lineGraph from '../../../assets/line-graph.png';
 import barGraph from '../../../assets/bar-graph.png';
 import paperStack from '../../../assets/paper-stack.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export const LandingPage = () => {
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     let scrollStep = -window.scrollY / 20; // Adjust the divisor for speed
     let scrollInterval = setInterval(() => {
@@ -21,7 +24,7 @@ export const LandingPage = () => {
 
   return (
     <div className='flex flex-col w-[100vw] bg-[#f9f9f9]'>
-      <section className='flex bg-[#666555] p-10'>
+      <section className='flex bg-[#666555] pt-4 pb-8'>
         <div className='flex flex-col mx-auto'>
           <h1 className='text-6xl mb-8 text-white'>Asylum Office Grant Rate Tracker</h1>
           <h3 className='text-white'>
@@ -49,7 +52,7 @@ export const LandingPage = () => {
           </div>
 
           <div className='flex align-center mx-auto gap-8'>
-            <button onClick={() => history.push('/graphs')} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
+            <button onClick={() => navigate('/graphs')} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
               View the Data
             </button>
             <button onClick={() => {}} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
