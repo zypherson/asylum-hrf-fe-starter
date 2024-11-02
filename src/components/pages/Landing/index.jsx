@@ -3,11 +3,11 @@ import lineGraph from '../../../assets/line-graph.png';
 import barGraph from '../../../assets/bar-graph.png';
 import paperStack from '../../../assets/paper-stack.jpg';
 import { useNavigate } from 'react-router-dom';
-import { useDownloadCsv } from '../../../hooks/useDownloadCsv.js';
+import { useDownloadData } from '../../../hooks/useDownloadData.js';
 
 export const LandingPage = () => {
   const navigate = useNavigate();
-  const { downloadCSV } = useDownloadCsv();
+  const { downloadJson } = useDownloadData();
 
   const scrollToTop = () => {
     let scrollStep = -window.scrollY / 20; // Adjust the divisor for speed
@@ -57,7 +57,7 @@ export const LandingPage = () => {
             <button onClick={() => navigate('/graphs')} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
               View the Data
             </button>
-            <button onClick={downloadCSV} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
+            <button onClick={downloadJson} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
               Download the Data
             </button>
           </div>
