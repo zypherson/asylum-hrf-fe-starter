@@ -1,8 +1,34 @@
-# React + Vite
+# Human Rights First: Asylum Report Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## North Star
+- A search tool to give a user-friendly view into a large dataset of asylum case decisions.
+- Similar to the [TRAC](https://trac.syr.edu/phptools/immigration/asylum/) database—a popular existing tool, but with many limitations.
+    - Generate a real-time visualization of outcomes, and a real-time graph to represent what the trend looks like over time.
+    - Show a heatmap where users can map out e.g., “Here are the 10 asylum regions with the highest or lowest grant rates.”
+    - Need to be able to download search results.
 
-Currently, two official plugins are available:
+## Audiences
+- Journalists
+- Researchers
+- General public (asylum seekers, activists, etc.)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Users
+- Administrators
+    - Engineers who interact directly with infra (don’t need user auth)
+    - Add/manage data
+- Public Users
+    - Don’t need to log in—just view and use the public web app
+    - Display calendar dates vs. fiscal years in data (display “month and year” and “fiscal year” as separate search)
+    - Can view on pre-populated geographic regions based on sets of countries for search parameters
+    - View percentage of cases that were granted based on currently displayed results
+    - Should be able to save or print reports, charts, and/or graphs generated from a query
+
+## Resources
+
+**The Setup for this project will require a new LTS Version of NodeJS to be installed Node Version 20.x works well for this purpose.**
+
+The following deployed site shows your exact deliverable and what you should be building:
+ - TODO
+
+This is what the raw data looks like from HRF:
+- [Sample Case Data](https://github.com/BloomTech-Labs/asylum-rg-fe-starter/blob/main/src/data/COW2021001887-I589Data.csv)
