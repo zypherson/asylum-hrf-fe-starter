@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
+export const App = () => {
   return (
     <ProvideAppContext>
       <div className='font-serif w-[100vw] h-[100vh] m-0 flex flex-col justify-between align-centre text-center min-h-screen bg-amber-50'>
@@ -31,6 +31,4 @@ function App() {
       </div>
     </ProvideAppContext>
   );
-}
-
-export default App;
+};
