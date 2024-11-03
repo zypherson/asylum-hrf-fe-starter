@@ -12,7 +12,7 @@ export const ChoroplethMap = () => {
   const text = locations.map(l => l.toLowerCase()).map(l => l.split(' ').map(capitalizr).join(' '));
 
   return (
-    <div className='flex flex-col align-middle'>
+    <div className='flex-c align-middle'>
       <Plot
         data={[
           {

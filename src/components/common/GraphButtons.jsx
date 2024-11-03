@@ -7,8 +7,8 @@ export const GraphButtons = ({ mapView, setMapView }) => {
   const { updateQuery, clearQuery } = useAppContext();
 
   return (
-    <section className='data-buttons flex flex-col justify-center gap-6'>
-      <section className='plot-buttons flex flex-col gap-1'>
+    <section className='data-buttons flex-c justify-center gap-6'>
+      <section className='plot-buttons flex-c gap-1'>
         <button className='scatter-plot bg-white p-1 text-black border-2' disabled={mapView === ScatterPlot} onClick={() => setMapView(ScatterPlot)}>
           Time Series
         </button>
@@ -20,11 +20,11 @@ export const GraphButtons = ({ mapView, setMapView }) => {
         </button>
       </section>
 
-      <section className='query-buttons flex flex-col gap-1'>
-        <button className='update-query bg-[#666555] text-amber-50' onClick={updateQuery}>
+      <section className='query-buttons flex-c gap-1'>
+        <button className='update-query primary-c text-amber-50' onClick={updateQuery}>
           Update Query
         </button>
-        <button className='clear-query bg-[#666555] text-amber-50' onClick={clearQuery}>
+        <button className='clear-query primary-c text-amber-50' onClick={clearQuery}>
           Clear Query
         </button>
       </section>
