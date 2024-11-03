@@ -14,7 +14,7 @@ export const LoggingButtons = () => {
   };
 
   return (
-    <button className='bg-amber-50 text-amber-800 px-4 py-1' onClick={handleLogging}>
+    <button className='nav-btn  px-4 py-1' onClick={handleLogging}>
       {buttonText}
     </button>
   );
