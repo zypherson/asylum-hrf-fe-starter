@@ -7,7 +7,7 @@ import { useDownloadData } from '../../../hooks/useDownloadData.js';
 
 export const LandingPage = () => {
   const navigate = useNavigate();
-  const { downloadJson } = useDownloadData();
+  const { downloadCSV } = useDownloadData();
 
   const scrollToTop = () => {
     let scrollStep = -window.scrollY / 20; // Adjust the divisor for speed
@@ -57,7 +57,7 @@ export const LandingPage = () => {
             <button onClick={() => navigate('/graphs')} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
               View the Data
             </button>
-            <button onClick={downloadJson} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
+            <button onClick={downloadCSV} className='bg-[#aaa] px-[10px] py-[5px] text-white text-md font-semibold'>
               Download the Data
             </button>
           </div>
