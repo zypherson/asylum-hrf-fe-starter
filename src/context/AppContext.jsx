@@ -5,42 +5,28 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 const AppContext = createContext({});
 
-const fiscalEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary';
-const citEndPoint = 'https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary';
-
+/**
+ * TODO: Ticket 2:
+ * - Use axios to fetch the data
+ * - Store the data
+ * - Populate the graphs with the stored data
+ */
 const useAppContextProvider = () => {
   const [graphData, setGraphData] = useState(testData);
   const [isDataLoading, setIsDataLoading] = useState(false);
 
   useLocalStorage({ graphData, setGraphData });
 
-  const getFiscalData = async () => {
-    const fiscalDataRes = await axios.get(fiscalEndPoint);
-
-    if (fiscalDataRes.status !== 200) {
-      alert('Error retrieving Citizenship Results.');
-      return;
-    }
-
-    const fiscData = fiscalDataRes.data;
-    if (fiscData) {
-      return fiscData;
-    }
-    alert('Unable to retrieve Fiscal Data.');
+  const getFiscalData = () => {
+    // TODO: Replace this with functionality to retrieve the data from the fiscalSummary endpoint
+    const fiscalDataRes = testData;
+    return fiscalDataRes;
   };
 
   const getCitizenshipResults = async () => {
-    const citizenshipRes = await axios.get(citEndPoint);
-
-    if (citizenshipRes.status !== 200) {
-      alert('Error retrieving Citizenship Results.');
-      return;
-    }
-    const citData = citizenshipRes.data;
-    if (citData) {
-      return citData;
-    }
-    alert('Unable to retrieve Citizenship Results.');
+    // TODO: Replace this with functionality to retrieve the data from the citizenshipSummary endpoint
+    const citizenshipRes = testData.citizenshipResults;
+    return citizenshipRes;
   };
 
   const updateQuery = async () => {
@@ -48,10 +34,7 @@ const useAppContextProvider = () => {
   };
 
   const fetchData = async () => {
-    const fiscData = await getFiscalData();
-    const citizenshipResults = await getCitizenshipResults();
-    setGraphData({ ...fiscData, citizenshipResults });
-    setIsDataLoading(false);
+    // TODO: fetch all the required data and set it to the graphData state
   };
 
   const clearQuery = () => {

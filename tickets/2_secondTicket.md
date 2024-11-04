@@ -10,12 +10,12 @@ To begin work on this ticket, make sure you have finished:
 Deliver the following: 
 
 - Integrate this frontend application with an API. 
-- Rework the `GraphWrapper.jsx` file and data visualizations to use an API instead of `test_data.json`.
+- Rework the `AppContext.jsx` file and data visualizations to use an API instead of `test_data.json`.
 - The graphs on the Graphs page should display after the integration.
 
 ### Relevant Files
 
-You must inspect the code in `src/components/pages/DataVisualizations`, `src/data`, and `src/state` to ensure that the application is pulling data from an API and not the dummy data file. Specifically, ONLY MAKE CHANGES in `GraphWrapper.jsx`.
+You must inspect the code in `src/components/pages/DataVisualizations`, `src/data`, and `src/components/common` to ensure that the application is pulling data from an API and not the dummy data file. Specifically, ONLY MAKE CHANGES in `AppContext.jsx`.
 
 ### Guidance
 
@@ -34,7 +34,7 @@ If you look at `src/data/text_data.json`, there are 2 JSON blobs(google the defi
 
 You must: 
 
-1. Ensure everything is working properly **AFTER** the API integration. Components should render correctly and show the data the same way they did before. (NOTE: Components may not render correctly before the integration.)
+1. Ensure everything is working properly **AFTER** the API integration. Components should render correctly and display the data in the same manner as it did before. (NOTE: The pulled data will be far more robust than the test data, but it Will be the same shape. Components may not render correctly before the integration.)
 
 2. Make this project your own, but keep the integrity of the main files so that the app can render and work when you wish to present it. 
 
