@@ -1,7 +1,9 @@
 import Logo from '../../assets/logo.png';
 import { LoggingButtons } from '../../auth/LoggingButtons.jsx';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Header() {
+  const { isAuthenticated } = useAuth0();
   return (
     <header className='flex w-[100%] primary-c justify-between px-14'>
       <div className='flex justify-between'>
@@ -16,9 +18,11 @@ export default function Header() {
         <a href='/graphs' className='nav-btn'>
           Graphs
         </a>
-        <a href='/profile' className='nav-btn'>
-          Profile
-        </a>
+        {isAuthenticated && (
+          <a href='/profile' className='nav-btn'>
+            Profile
+          </a>
+        )}
         <LoggingButtons />
       </div>
     </header>

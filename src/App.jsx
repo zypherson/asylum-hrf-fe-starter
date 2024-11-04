@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsPage } from './components/pages/DataVisualizations/GraphsPage.jsx';
 import { NotFoundPage } from './components/pages/NotFound/index.jsx';
 import * as React from 'react';
-import { Profile } from './components/pages/Profile/index.jsx';
+import Profile from './components/pages/Profile/index.jsx';
 
 const router = createBrowserRouter([
   {
