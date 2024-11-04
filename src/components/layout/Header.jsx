@@ -1,10 +1,14 @@
 import Logo from '../../assets/logo.png';
 import { LoggingButtons } from '../../auth/LoggingButtons.jsx';
-import { useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
 
+/**
+ * TODO: Ticket 3:
+ * Implement authentication using Auth0
+ */
 export default function Header() {
-  const { isAuthenticated } = useAuth0();
+  // TODO: Replace me
+  const isAuthenticated = false;
 
   return (
     <header className='flex w-[100%] primary-c justify-between px-14'>

@@ -27,9 +27,8 @@ For a step-by-step guide on how to transition from React to Next.js, refer to: `
 
 ### Requirements
 
-1. Do not upgrade to a Node version higher than 16.16.0. If you are, continue to use `nvm` (for Mac) or `nvm-windows` to manage your node versions.
-2. Ensure that all existing functionality and components of the React app are working as expected after the migration.
-3. Maintain the integrity of the main files and ensure the application can be presented and demonstrated without issues.
+1. Ensure that all existing functionality and components of the React app are working as expected after the migration.
+2. Maintain the integrity of the main files and ensure the application can be presented and demonstrated without issues.
 
 ## Deliverables 
 

@@ -7,17 +7,16 @@ To begin work on this ticket, make sure you have finished:
 
 ### Objective
 
-Deliver the following: 
+Deliver the following:
 
-- Integrate the Auth0 microservice into the project.
+- Integrate the Auth0 microservice into the project. (hint: @auth0/auth0-react)
 - Establish a `Profile Page` that only appears on the navigation menu if a user is logged in. 
 - The `Profile Page` should display some basic info on the logged in user. 
 - There should be a Login/Logout button in the navigation menu that redirects you to Auth0 to login. 
 
 ### Relevant Guides
 
-The following guide from Auth0 will show you how to proceed from start to finish: `https://auth0.com/blog/complete-guide-to-react-user-authentication/`.
-**NOTE: Please make sure to use the older version and not to use the updated as it will be incompatible with the current asylumFE project**
+The following guide from Auth0 will show you how to proceed from start to finish: `https://auth0.com/docs/libraries/auth0-react/`.
 
 ### Guidance
 
@@ -27,9 +26,7 @@ You must:
 
 1. Ensure everything is working properly after the Auth0 integration. Components should render correctly and show the data the same way they did before. 
 
-2. Do not use a Node version higher than 16.16.0. If you are, you can use `nvm` (for Mac) or `nvm-windows` to easily toggle your node versions in directories. 
-
-3. Make this project your own, but keep the integrity of the main files so that the app can render and work when you wish to present it. 
+2. Make this project your own, but keep the integrity of the main files so that the app can render and work when you wish to present it. 
 
 ## Deliverables 
 

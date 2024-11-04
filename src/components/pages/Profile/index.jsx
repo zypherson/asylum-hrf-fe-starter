@@ -1,30 +1,23 @@
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-
+/**
+ * TODO: Ticket 3:
+ * Implement authentication using Auth0:
+ * - Get the user data from Auth0
+ * - Create and style the component
+ * - Display the data
+ * - Make this page a protected Route
+ */
 const Profile = () => {
-  const { user, isAuthenticated, isLoading, logout } = useAuth0();
+  // TODO: Replace these with functionality from Auth0
+  const isLoading = false;
+  const user = true;
 
   if (isLoading || !user) {
     return <div className='text-center p-4'>Loading...</div>;
   }
 
   return (
-    isAuthenticated && (
-      <div className='max-w-sm mx-auto mt-10 bg-white rounded-lg shadow-lg p-6 text-center'>
-        <img src={user.picture} alt={user.name} className='w-24 h-24 rounded-full mx-auto mb-4' />
-        <h2 className='text-2xl font-semibold mb-2'>{user.name}</h2>
-        <p className='text-gray-600'>{user.email}</p>
-        <button
-          className='mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition'
-          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-        >
-          Logout
-        </button>
-      </div>
-    )
+    <div>Profile Page</div>
   );
 };
 
-export default withAuthenticationRequired(Profile, {
-  // Show a message while the user waits to be redirected to the login page.
-  onRedirecting: () => <div>Redirecting you to the login page...</div>,
-});
+export default Profile;
