@@ -1,7 +1,7 @@
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
   if (isLoading || !user) {
     return <div className='text-center p-4'>Loading...</div>;
@@ -15,7 +15,7 @@ const Profile = () => {
         <p className='text-gray-600'>{user.email}</p>
         <button
           className='mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition'
-          onClick={() => logout({ returnTo: window.location.origin })}
+          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
         >
           Logout
         </button>
