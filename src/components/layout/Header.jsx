@@ -16,6 +16,9 @@ export default function Header() {
         <a href='/graphs' className='nav-btn'>
           Graphs
         </a>
+        <a href='/profile' className='nav-btn'>
+          Profile
+        </a>
         <LoggingButtons />
       </div>
     </header>

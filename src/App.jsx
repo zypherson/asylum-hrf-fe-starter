@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GraphsPage } from './components/pages/DataVisualizations/GraphsPage.jsx';
 import { NotFoundPage } from './components/pages/NotFound/index.jsx';
 import * as React from 'react';
+import { Profile } from './components/pages/Profile/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
   {
     path: '/graphs',
     element: <GraphsPage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: '/profile',
+    element: <Profile />,
     errorElement: <NotFoundPage />,
   },
 ]);
