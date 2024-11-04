@@ -26,9 +26,9 @@ You must:
 
 1. Focus on making the landing page for the browser. You can adjust the styles for mobile and tablet in the stretch goals of this project after you complete all 3 tickets.
 
-2. Use the exact imports on the `RenderLandingPage.jsx` file. This way you have the same photos and libraries available to you as the deployed site. 
+2. Use the exact imports on the `LandingPage/index.jsx` file. This way you have the same photos and libraries available to you as the deployed site. 
 
-3. Do not use a Node version higher than 16.16.0. If you are, you can use `nvm` (for Mac) or `nvm-windows` to easily toggle your node versions in directories. 
+3. Refer to the Tailwind docs to assist in your styling efforts. [Tailwind docs](https://tailwindcss.com/docs/installation)
 
 4. Make this project your own, but keep the integrity of the main files so that the app can render and work when you wish to present it. 
 
