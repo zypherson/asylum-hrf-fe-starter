@@ -54,8 +54,40 @@ In addition to the three main tickets, there is also a stretch ticket available:
 The following deployed site shows the exact deliverable and what you should be building:
 - [Asylum Front End](https://asylum-fe.vercel.app)
 
-## To Start Project
-- !!! Fork !!! the repo, and clone it to your local machine
-- run `npm i`
-- run `npm run dev`
-- open browser at indicated localhost url
+## Getting Started
+
+### Fork the Repository
+First, fork this repository to your own GitHub account.
+
+### Clone the Repository
+Next, clone your forked repository to your local machine:
+
+```
+git clone https://github.com/your-username/asylum-hrf-fe-starter.git
+```
+
+### Install Dependencies
+Navigate to the project directory and install the dependencies:
+
+```
+cd asylum-hrf-fe-starter
+npm install
+```
+
+### Start the Development Server
+To start the development server, run:
+
+```
+npm run dev
+```
+
+This will start the development server then open the app in your web browser. Any changes you make to the code will automatically reload the page.
+
+### Build the App
+To create a production build of the app, run:
+
+```
+npm run build
+```
+
+This will create an optimized production build in the `dist` folder.
