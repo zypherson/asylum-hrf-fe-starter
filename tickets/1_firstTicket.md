@@ -8,15 +8,14 @@ To begin work on this ticket, make sure you have finished:
 
 Deliver the following: 
 
-- Landing page that matches the landing page on the [screenshot](https://raw.githubusercontent.com/BloomTech-Labs/asylum-rg-fe-starter/main/tickets/examples/landing-page.png). 
+- Landing page that matches the landing page on the [screenshot](examples/LandingPage.jpeg). 
 - While you may make small changes to styles, the page should mostly match what is provided. 
 
 ### Relevant Files
 
-Your React code should be added to `RenderLandingPage.jsx`. 
-Your styles should be added to `RenderLandingPage.less`.
+Your React code and styles should be added to `src/components/pages/Landing/index.jsx`. 
 
-> There are comments in both files to guide you and show you where to add code. 
+> There are comments in the file to help guide you. 
 
 ### Guidance
 
