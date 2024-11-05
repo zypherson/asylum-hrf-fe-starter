@@ -1,5 +1,3 @@
-Got it, here's the updated README with the new stretch ticket:
-
 # Human Rights First: Asylum Report Generator
 
 ## Problem Statement
@@ -55,3 +53,9 @@ In addition to the three main tickets, there is also a stretch ticket available:
 
 The following deployed site shows the exact deliverable and what you should be building:
 - [Asylum Front End](https://asylum-fe.vercel.app)
+
+## To Start Project
+- !!! Fork !!! the repo, and clone it to your local machine
+- run `npm i`
+- run `npm run dev`
+- open browser at indicated localhost url
