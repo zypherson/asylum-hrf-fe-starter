@@ -16,7 +16,7 @@ Deliver the following:
 
 ### Relevant Guides
 
-The following guide from Auth0 will show you how to proceed from start to finish: `https://auth0.com/docs/libraries/auth0-react/`.
+The following guide from Auth0 will show you how to proceed from start to finish: [Auth0 Docs Guide](https://auth0.com/docs/libraries/auth0-react/).
 
 ### Guidance
 
