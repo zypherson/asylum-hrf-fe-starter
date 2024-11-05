@@ -63,7 +63,7 @@ First, fork this repository to your own GitHub account.
 Next, clone your forked repository to your local machine:
 
 ```
-git clone https://github.com/your-username/asylum-hrf-fe-starter.git
+git clone https://github.com/{INSERT YOUR GITHUB USERNAME}/asylum-hrf-fe-starter.git
 ```
 
 ### Install Dependencies
