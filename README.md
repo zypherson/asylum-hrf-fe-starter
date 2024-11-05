@@ -1,3 +1,5 @@
+Got it, here's the updated README with the new stretch ticket:
+
 # Human Rights First: Asylum Report Generator
 
 ## Problem Statement
@@ -44,9 +46,9 @@ Here are summaries of the three tickets in the `tickets` directory, with links t
 ## Stretch Ticket
 In addition to the three main tickets, there is also a stretch ticket available:
 
-- **Responsive Design**
-  - [Ticket Description](tickets/stretch_ticket.md)
-  - Ensure the application is responsive and provides a good user experience on mobile and tablet devices.
+- **Stretch Ticket: Migrate to Next.js**
+  - [Ticket Description](tickets/4_stretchTicketNEXTjs.md)
+  - Migrate the current React application to Next.js to leverage server-side rendering, better performance, and routing capabilities.
 
 ## Resources
 **The Setup for this project will require a new LTS Version of NodeJS to be installed. Node Version 20.x works well for this purpose.**
