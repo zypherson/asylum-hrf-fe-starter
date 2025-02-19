@@ -14,31 +14,71 @@ const AppContext = createContext({});
 const useAppContextProvider = () => {
   const [graphData, setGraphData] = useState(testData);
   const [isDataLoading, setIsDataLoading] = useState(false);
-
+  const [error, setError] = useState(null);
+  
   useLocalStorage({ graphData, setGraphData });
 
-  const getFiscalData = () => {
+  const getFiscalData = async () => {
     // TODO: Replace this with functionality to retrieve the data from the fiscalSummary endpoint
-    const fiscalDataRes = testData;
-    return fiscalDataRes;
+    try {
+      const response = await axios.get('https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary');
+      return response.data; 
+    } catch (err) {
+      console.error("Error fetching fiscal data:", err);
+      setError(err);
+      return null;
+    }
   };
 
   const getCitizenshipResults = async () => {
     // TODO: Replace this with functionality to retrieve the data from the citizenshipSummary endpoint
-    const citizenshipRes = testData.citizenshipResults;
-    return citizenshipRes;
+    try {
+      const response = await axios.get('https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary');
+      return response.data; 
+    } catch (err) {
+      console.error("Error fetching citizenship data:", err);
+      setError(err);
+      return [];
+    }
+  };
+
+ 
+
+  const fetchData = async () => {
+    // TODO: fetch all the required data and set it to the graphData state
+    setIsDataLoading(true);
+    try {
+      const fiscalData = await getFiscalData();
+      const citizenshipData = await getCitizenshipResults();
+
+      if (fiscalData && citizenshipData.length > 0) {
+        setGraphData({
+          ...fiscalData, 
+          citizenshipResults: citizenshipData, 
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsDataLoading(false);
+    }
+  };
+
+ 
+  useEffect(() => {
+    if (isDataLoading) {
+      fetchData();
+    }
+  }, [isDataLoading]);
+  ;
+
+  const clearQuery = () => {
+    setGraphData(null);
+    console.log('here')
   };
 
   const updateQuery = async () => {
     setIsDataLoading(true);
-  };
-
-  const fetchData = async () => {
-    // TODO: fetch all the required data and set it to the graphData state
-  };
-
-  const clearQuery = () => {
-    setGraphData({});
   };
 
   const getYears = () => graphData?.yearResults?.map(({ fiscal_year }) => Number(fiscal_year)) ?? [];
@@ -48,6 +88,7 @@ const useAppContextProvider = () => {
       fetchData();
     }
   }, [isDataLoading]);
+  ;
 
   return {
     graphData,
@@ -56,6 +97,7 @@ const useAppContextProvider = () => {
     updateQuery,
     clearQuery,
     getYears,
+    error
   };
 };
 
