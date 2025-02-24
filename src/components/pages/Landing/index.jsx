@@ -17,7 +17,9 @@ export const LandingPage = () => {
   const { downloadCSV } = useDownloadData();
 
   const scrollToTop = () => {
-    console.log('here')
+    console.log('Auth0 Domain:', AUTH_DOMAIN);
+  console.log('Auth0 Client ID:', AUTH_CLIENT_ID);
+
     let scrollStep = -window.scrollY / 15; // Adjust the divisor for speed
     let scrollInterval = setInterval(() => {
       if (window.scrollY === 0) {

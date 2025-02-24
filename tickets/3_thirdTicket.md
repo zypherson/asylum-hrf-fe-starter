@@ -7,13 +7,13 @@ To begin work on this ticket, make sure you have finished:
 
 ### Objective
 
-Deliver the following:
+ the following:
 
 - Integrate the Auth0 microservice into the project. (hint: @auth0/auth0-react)
 - Establish a `Profile Page` that only appears on the navigation menu if a user is logged in. 
 - The `Profile Page` should display some basic info on the logged in user. 
 - There should be a Login/Logout button in the navigation menu that redirects you to Auth0 to login. 
-
+Deliver
 ### Relevant Guides
 
 The following guide from Auth0 will show you how to proceed from start to finish: [Auth0 Docs Guide](https://auth0.com/docs/libraries/auth0-react/).
@@ -29,7 +29,7 @@ You must:
 2. Make this project your own, but keep the integrity of the main files so that the app can render and work when you wish to present it. 
 
 ## Deliverables 
-
+f
 Submit the following in your course: 
 
 - Link to your forked repo with the code for the new profile page and auth integration

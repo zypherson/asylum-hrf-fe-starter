@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 /**
  * TODO: Ticket 3:
  * Implement authentication using Auth0:
@@ -7,16 +8,21 @@
  * - Make this page a protected Route
  */
 const Profile = () => {
-  // TODO: Replace these with functionality from Auth0
-  const isLoading = false;
-  const user = true;
 
-  if (isLoading || !user) {
-    return <div className='text-center p-4'>Loading...</div>;
-  }
+
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) return <div className='text-center p-4'>Loading...</div>;
+
+  if (!isAuthenticated) return <div className='text-center p-4'>You are not logged in.</div>;
 
   return (
-    <div>Profile Page</div>
+    <div className='p-6 text-center'>
+      <h2 className='text-2xl font-bold'>Profile</h2>
+      
+      <p className='text-lg mt-2'>{user.name}</p>
+      <p className='text-sm text-gray-500'>{user.email}</p>
+    </div>
   );
 };
 
